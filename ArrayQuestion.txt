@@ -1,0 +1,110 @@
+1. Largest Element
+
+int largest = arr[0]
+
+for(int i=0; i<n; i++)
+{
+    if(arr[i]<largest)
+	{
+	largest = arr[i];
+	}
+}
+return largest;
+
+
+
+2. Second Largest and Second Smallest
+
+
+int secondLargest(int n, vector<int> a )
+{
+    int first = INT_MIN;
+    int second = INT_MIN;
+    for(int i=1;i<n; i++)
+    {
+        if(first < a[i])
+        {
+            second = first;
+            first = a[i];
+        } else if (a[i] > second && a[i] < first) {
+            second = a[i];
+        }
+    }
+    return second;
+}
+
+int secondsmallest(int n, vector<int> a )
+{
+    int first = a[0];
+    int second = INT_MAX;
+    for(int i=1;i<n; i++)
+    {
+        if(a[i] < first )
+        {
+            second = first;
+            first = a[i];
+        } else if (a[i] != second && a[i] < second) {
+            second = a[i];
+        }
+    }
+    return second;
+}
+
+vector<int> getSecondOrderElements(int n, vector<int> a) {
+   vector<int> ans;
+   ans.push_back(secondLargest(n,a));
+   ans.push_back(secondsmallest(n,a));
+
+   return ans;
+}
+
+
+
+3. is Sorted
+
+int isSorted(int n, vector<int> a) {
+    for(int i=1;i<n;i++)
+    {
+        if(a[i]>= a[i-1])
+        {
+
+        }
+        else{
+            return false;
+        }   
+    }
+    return true;
+}
+
+
+4.Remove Duplicates from Sorted Array
+
+//Two Pointer approch
+
+int removeDuplicates(vector<int> &arr, int n) {
+	
+	int i=0;
+	for(int j=0;j<n;j++)
+	{
+		if(arr[j] != arr[i])
+		{
+			arr[i+1] = arr[j];
+			i++;
+		}
+	}
+	return (i+1);
+
+}
+
+
+5. Rotate Array
+
+vector<int> rotateArray(vector<int> arr, int k) {
+    int size= arr.size();
+    vector<int> ans(size);
+    for(int i=0;i<size;i++)
+    {
+        ans[i]=arr[(i+k)%size];
+    }
+    return ans;
+}
